@@ -14,7 +14,9 @@ const sampleBlogPosts = [
     tag: "Sustentabilidad",
     readTime: "5 min",
     published: true,
+    image: null,
     createdAt: new Date("2025-12-15"),
+    updatedAt: new Date("2025-12-15"),
     authorName: "Carlos Mendoza",
   },
   {
@@ -26,7 +28,9 @@ const sampleBlogPosts = [
     tag: "Vida de Rancho",
     readTime: "4 min",
     published: true,
+    image: null,
     createdAt: new Date("2025-11-28"),
+    updatedAt: new Date("2025-11-28"),
     authorName: "María Fernández",
   },
 ];
