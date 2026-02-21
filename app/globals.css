@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #1a3c1a;
+    --primary-light: #2d5a2d;
+    --accent: #c4572a;
+    --accent-light: #e07a52;
+    --bg: #faf8f4;
+    --bg-warm: #f5f0e8;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --border: #e0dbd3;
+  }
+
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white border-none px-9 py-4 rounded-md text-sm font-semibold uppercase tracking-wider cursor-pointer transition-all duration-300 font-sans;
+  }
+  .btn-primary:hover {
+    @apply bg-accent-light -translate-y-0.5;
+    box-shadow: 0 8px 30px rgba(196, 87, 42, 0.3);
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-white border-2 border-white/40 px-8 py-3.5 rounded-md text-sm font-semibold uppercase tracking-wider cursor-pointer transition-all duration-300 font-sans;
+  }
+  .btn-outline:hover {
+    @apply border-white bg-white/10;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold tracking-[3px] uppercase text-accent mb-3;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl font-normal leading-tight mb-5 tracking-tight;
+  }
+
+  .card {
+    @apply bg-white border border-border rounded-xl overflow-hidden transition-all duration-400;
+  }
+  .card:hover {
+    @apply -translate-y-1.5 shadow-xl border-transparent;
+  }
+}
+
+/* Page transitions */
+.page-enter {
+  animation: pageIn 0.5s ease both;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
