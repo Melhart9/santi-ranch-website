@@ -30,30 +30,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate unique filename
     const ext = file.name.split(".").pop() || "jpg";
     const timestamp = Date.now();
     const randomStr = Math.random().toString(36).substring(2, 8);
     const filename = `ranch/${timestamp}-${randomStr}.${ext}`;
 
-    // Upload to Vercel Blob - for private stores we need to use signed URLs
-    // But for now, try without access parameter
+    // Upload to Vercel Blob (PUBLIC store)
     const blob = await put(filename, file, {
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      access: "public",
     });
 
     return NextResponse.json({ url: blob.url });
   } catch (error: any) {
     console.error("Upload error:", error);
-    
-    // Check if it's the private store error
-    if (error?.message?.includes("private store")) {
-      return NextResponse.json(
-        { error: "El almacenamiento está configurado como privado. Cambia a público en Vercel Dashboard > Storage > Settings" },
-        { status: 500 }
-      );
-    }
-    
     return NextResponse.json(
       { error: error.message || "Error al subir la imagen." },
       { status: 500 }
