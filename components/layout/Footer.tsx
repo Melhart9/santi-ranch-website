@@ -54,7 +54,7 @@ export default async function Footer() {
           <ul className="space-y-3 text-sm">
             <li>PUE-101 / Lázaro Cárdenas</li>
             <li>Mecapalapa, Puebla, México</li>
-            <li>info@dosarroyos.mx</li>
+            <li>contactodosarryos@gmail.com</li>
           </ul>
 
           {(isNonEmpty(facebook) || isNonEmpty(instagram) || isNonEmpty(youtube)) && (
