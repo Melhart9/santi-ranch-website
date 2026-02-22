@@ -52,9 +52,8 @@ export default async function Footer() {
         <div>
           <h4 className="text-xs font-semibold uppercase tracking-[1.5px] text-white mb-5">Contacto</h4>
           <ul className="space-y-3 text-sm">
-            <li>Km 42, Carretera Nacional</li>
-            <li>Sonora, México</li>
-            <li>+52 (662) 555-0123</li>
+            <li>PUE-101 / Lázaro Cárdenas</li>
+            <li>Mecapalapa, Puebla, México</li>
             <li>info@dosarroyos.mx</li>
           </ul>
 
