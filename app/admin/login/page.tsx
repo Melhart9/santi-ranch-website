@@ -53,7 +53,7 @@ export default function LoginPage() {
           <div className="mb-5">
             <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Usuario</label>
             <input
-              type="email"
+              type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
