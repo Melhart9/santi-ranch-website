@@ -1,6 +1,22 @@
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 
-export default function Footer() {
+import { getSiteSettings } from "@/lib/actions/settings";
+
+function isNonEmpty(value?: string | null) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+export default async function Footer() {
+  // Ensure social links reflect the latest settings without requiring a rebuild.
+  noStore();
+  const settings = await getSiteSettings();
+
+  const facebook = settings?.facebook ?? "";
+  const instagram = settings?.instagram ?? "";
+  const youtube = settings?.youtube ?? "";
+
   return (
     <footer className="bg-[#1a1a1a] text-white/70 pt-20 pb-10 px-6 md:px-10">
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
@@ -41,6 +57,44 @@ export default function Footer() {
             <li>+52 (662) 555-0123</li>
             <li>info@dosarroyos.mx</li>
           </ul>
+
+          {(isNonEmpty(facebook) || isNonEmpty(instagram) || isNonEmpty(youtube)) && (
+            <div className="flex items-center gap-4 mt-6">
+              {isNonEmpty(facebook) && (
+                <a
+                  href={facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={20} />
+                </a>
+              )}
+              {isNonEmpty(instagram) && (
+                <a
+                  href={instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+              )}
+              {isNonEmpty(youtube) && (
+                <a
+                  href={youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube size={20} />
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
